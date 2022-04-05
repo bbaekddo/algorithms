@@ -1,3 +1,4 @@
+/*
 package com.SWExpertAcademy;
 
 import java.io.BufferedReader;
@@ -133,3 +134,4 @@ public class Problem1233 {
         }
     }
 }
+*/
