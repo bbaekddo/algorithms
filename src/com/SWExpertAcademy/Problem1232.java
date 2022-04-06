@@ -1,3 +1,4 @@
+/*
 package com.SWExpertAcademy;
 
 import java.io.BufferedReader;
@@ -84,7 +85,8 @@ public class Problem1232 {
             }
 
             // 온라인 제출용
-            /*Scanner scanner = new Scanner(System.in);
+            */
+/*Scanner scanner = new Scanner(System.in);
             for (int test = 1; test <= 10; test++) {
                 ArrayList<String> inputArrayList = new ArrayList<>();
                 int keyCount = Integer.parseInt(scanner.nextLine());
@@ -106,7 +108,8 @@ public class Problem1232 {
                         node.setRightNode(Integer.parseInt(nodeInput[3]));
                     }
                     nodeList.add(node);
-                }*/
+                }*//*
+
 
             // 사칙연산
             int answer = (int) nodeCheck(1);
@@ -148,3 +151,4 @@ public class Problem1232 {
         }
     }
 }
+*/
