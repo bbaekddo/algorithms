@@ -15,8 +15,14 @@ public class Problem1240 {
         BufferedReader bufferedReader = new BufferedReader(
                 new FileReader("/Users/dohyeonsmac/Desktop/Programming/Algorithms/testInput/problem1240.txt")
         );
-
         int testCase = Integer.parseInt(bufferedReader.readLine());
+
+        // 온라인 제출용
+        /*
+        Scanner scanner = new Scanner(System.in);
+        int testCase = Integer.parseInt(scanner.nextLine());
+        */
+
 
         for (int test = 1; test <= testCase; test++) {
             // 입력 배열 저장할 배열 리스트 선언
@@ -38,6 +44,26 @@ public class Problem1240 {
                     indexM = tempInput.indexOf("1");
                 }
             }
+
+            // 온라인 제출용
+            /*
+            String[] nbym = scanner.nextLine().split("\\s");
+            int height = Integer.parseInt(nbym[0]);
+            int width = Integer.parseInt(nbym[1]);
+
+            // 테스트 케이스 배열 저장 후 '1'이 있는 인덱스 저장
+            int indexN = 0;
+            int indexM = 0;
+            String tempInput = "";
+            for (int i = 0; i < height; i++) {
+                tempInput = scanner.nextLine();
+                inputStrings.add(tempInput);
+                if (tempInput.matches("(.*)1(.*)") && indexN == 0 && indexM == 0) {
+                    indexN = i;
+                    indexM = tempInput.indexOf("1");
+                }
+            }
+            */
 
             // 한 줄의 코드 길이 내 불필요한 '0'의 개수
             String secretCodeString = inputStrings.get(indexN);
@@ -76,15 +102,7 @@ public class Problem1240 {
             }
 
             System.out.println("#" + test + " " + answer);
-            /*// 온라인 제출용
-            Scanner scanner = new Scanner(System.in);
-            for (int test = 1; test <= testCase; test++) {
-                ArrayList<String> inputArrayList = new ArrayList<>();
-                int keyCount = Integer.parseInt(scanner.nextLine());
-                for (int i = 1; i <= keyCount; i++) {
-                    inputArrayList.add(scanner.nextLine());
-                }
-            }*/
+
 
             inputStrings.clear();
         }
