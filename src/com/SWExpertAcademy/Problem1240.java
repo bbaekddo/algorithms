@@ -1,7 +1,5 @@
 package com.SWExpertAcademy;
 
-import com.sun.security.jgss.GSSUtil;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -85,11 +83,11 @@ public class Problem1240 {
             }
             // 암호 홀수, 짝수 총합 계산
             int sum = 0;
-            for (int i : codeArray) {
-                if ((i % 2) == 0) {
-                    sum += i;
+            for (int i = 0; i < codeArray.length; i++) {
+                if (((i + 1) % 2) == 0) {
+                    sum += codeArray[i];
                 } else {
-                    sum += i * 3;
+                    sum += (codeArray[i] * 3);
                 }
             }
 
