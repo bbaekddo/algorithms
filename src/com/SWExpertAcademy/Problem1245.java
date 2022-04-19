@@ -40,12 +40,12 @@ public class Problem1245 {
                 magneticMaterials[j][1] = Integer.parseInt(stringTokenizer.nextToken());
             }
 
-            // 이진탐색 회수 초기화
-            searchCount = 100;
-
             // 결과 출력
-            System.out.print("#" + testCase);
+            System.out.print("#" + (i + 1));
             for (int j = 0; j < (magneticMaterialCount - 1); j++) {
+                // 이진탐색 회수 초기화
+                searchCount = 100;
+
                 double midPoint = (magneticMaterials[j][0] + magneticMaterials[j + 1][0]) / 2.0;
                 double leftPoint = magneticMaterials[j][0];
                 double rightPoint = magneticMaterials[j + 1][0];
