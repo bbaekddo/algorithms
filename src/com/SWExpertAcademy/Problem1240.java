@@ -1,3 +1,4 @@
+/*
 package com.SWExpertAcademy;
 
 import java.io.BufferedReader;
@@ -16,10 +17,12 @@ public class Problem1240 {
         int testCase = Integer.parseInt(bufferedReader.readLine());
 
         // 온라인 제출용
-        /*
+        */
+/*
         Scanner scanner = new Scanner(System.in);
         int testCase = Integer.parseInt(scanner.nextLine());
-        */
+        *//*
+
 
 
         for (int test = 1; test <= testCase; test++) {
@@ -44,7 +47,8 @@ public class Problem1240 {
             }
 
             // 온라인 제출용
-            /*
+            */
+/*
             String[] nbym = scanner.nextLine().split("\\s");
             int height = Integer.parseInt(nbym[0]);
             int width = Integer.parseInt(nbym[1]);
@@ -61,7 +65,8 @@ public class Problem1240 {
                     indexM = tempInput.indexOf("1");
                 }
             }
-            */
+            *//*
+
 
             // 한 줄의 코드 길이 내 불필요한 '0'의 개수
             String secretCodeString = inputStrings.get(indexN);
@@ -156,4 +161,4 @@ public class Problem1240 {
             }
         }
     }
-}
+}*/
