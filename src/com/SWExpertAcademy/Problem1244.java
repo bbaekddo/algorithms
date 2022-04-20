@@ -39,6 +39,7 @@ public class Problem1244 {
             // 교환 횟수 저장
             exchangeCount = Integer.parseInt(stringTokenizer.nextToken());
 
+            // 숫자판 교환 시작
             getExchange(0);
 
             // 결과 출력
@@ -51,29 +52,65 @@ public class Problem1244 {
     }
 
     public static void getExchange(int index) {
+        // 교환 회수가 0 이상일 때만 함수 실행
         if (exchangeCount > 0) {
-            // 숫자판 중 가장 큰 수와 위치 구하기
-            int maxNumber = 0;
-            int maxNumberIndex = index;
-            for (int i = index; i < numbers.length; i++) {
-                if (maxNumber <= numbers[i]) {
-                    maxNumber = numbers[i];
-                    maxNumberIndex = i;
+            // index가 마지막 숫자일 때
+            if (index == (numbers.length - 1)) {
+                // 중복 숫자가 있으면 함수 종료
+                for (int i = 0; i < (numbers.length - 1); i++) {
+                    for (int j = 1; j < numbers.length; j++) {
+                        if (numbers[i] == numbers[j]) {
+                            exchangeCount = 0;
+                            return;
+                        }
+                    }
                 }
-            }
 
-            // 현재 가장 왼쪽의 수가 가장 클 경우
-            if (maxNumberIndex == index) {
-                getExchange(maxNumberIndex + 1);
-                // 가장 큰 수와 제인 왼쪽의 수 교환
-            } else {
+                // 중복 숫자가 없으면 1의 자리와 10의 자리 교환
                 int tempExchange = numbers[index];
-                numbers[index] = maxNumber;
-                numbers[maxNumberIndex] = tempExchange;
+                numbers[index] = numbers[index - 1];
+                numbers[index - 1] = tempExchange;
 
                 exchangeCount--;
 
-                getExchange(index + 1);
+                getExchange(index);
+            // index가 마지막 숫자가 아닐 때
+            } else {
+
+                // 현재값이 들어갈 위치 판단
+                int countIndex = -1;
+                for (int number : numbers) { // 자기 자리 찾음
+                    if (number >= numbers[index]) {
+                        countIndex++;
+                    }
+                }
+
+                // 숫자판 중 가장 큰 수와 위치 구하기
+                int maxNumber = 0;
+                int maxNumberIndex = 0;
+                for (int i = index; i < numbers.length; i++) {
+                    if (maxNumber < numbers[i]) {
+                        maxNumber = numbers[i];
+                        maxNumberIndex = i;
+                    } else if (maxNumber == numbers[i]) {
+                        if (i <= countIndex) {
+                            maxNumberIndex = i;
+                        }
+                    }
+                }
+
+                // 현재 가장 왼쪽의 수가 가장 클 경우
+                if (maxNumber == numbers[index]) {
+                    getExchange(index + 1);
+                } else {
+                    int tempExchange = numbers[index];
+                    numbers[index] = maxNumber;
+                    numbers[maxNumberIndex] = tempExchange;
+
+                    exchangeCount--;
+
+                    getExchange(index + 1);
+                }
             }
         }
     }
