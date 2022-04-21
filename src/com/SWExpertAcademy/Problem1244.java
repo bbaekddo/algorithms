@@ -1,3 +1,4 @@
+/*
 package com.SWExpertAcademy;
 
 import java.io.BufferedReader;
@@ -17,11 +18,13 @@ public class Problem1244 {
                 new FileReader("/Users/dohyeonsmac/Desktop/Programming/Algorithms/testInput/problem1244.txt")
         );
 
-        /*
+        */
+/*
         // 온라인 제출용
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-        */
+        *//*
+
 
         // testCase 입력
         int testCase = Integer.parseInt(bufferedReader.readLine());
@@ -114,4 +117,4 @@ public class Problem1244 {
             }
         }
     }
-}
+}*/
