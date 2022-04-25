@@ -41,32 +41,53 @@ public class Problem1247 {
             getDistance(locations, (totalCustomer + 2), 0, 0, 0);
 
             // 결과 출력
-            System.out.println("#" + (i + 1) + shortestWay);
+            System.out.println("#" + (i + 1) + " " + shortestWay);
         }
     }
 
     public static void getDistance(int[][] locations, int totalLocation, int index, int level, int distance) {
         // 도착지점에 도달하면 탐색 종료
-        if (level >= (totalLocation - 1) && distance < shortestWay) {
-            shortestWay = distance;
+        if (level >= (totalLocation - 1)) {
+            if (distance < shortestWay) {
+                shortestWay = distance;
+            }
             return;
         }
 
-        for (int i = 0; i < ((totalLocation - 2) - level); i++) {
+        // 현재 인덱스 위치를 기준으로 다른 고객의 거리 산출
+        for (int i = 2; i < totalLocation; i++) {
             // 이미 탐색한 곳은 패스
-            if (locations[index][0] != -1) {
-                int nextDistance = Math.abs(locations[index + i][0] - locations[index][0]) + Math.abs(locations[index + i][1] - locations[index][1]);
+            if (locations[i][0] != -1) {
+                int nextDistance;
+
+                // 다른 고객이 하나도 없을 경우 집까지의 거리 산출
+                if (index == i) {
+                    if (level == (totalLocation - 2)) {
+                        nextDistance = Math.abs(locations[1][0] - locations[index][0]) + Math.abs(locations[1][1] - locations[index][1]);
+                    } else {
+                        continue;
+                    }
+                } else {
+                    nextDistance = Math.abs(locations[i][0] - locations[index][0]) + Math.abs(locations[i][1] - locations[index][1]);
+                }
                 distance += nextDistance;
 
-                // 현재 최단거리보다 계산 경로가 크면 탐색 종료
-                if (distance > shortestWay) {
-                    return;
-                } else {
+                // 현재 거리의 합이 최소값보다 크면 탐색 종료
+                if (distance < shortestWay) {
+                    int tempX = locations[index][0];
+                    int tempY = locations[index][1];
                     locations[index][0] = -1;
                     locations[index][1] = -1;
 
-                    getDistance(locations, totalLocation, (index + i), (level - 1), distance);
+                    getDistance(locations, totalLocation, i, (level + 1), distance);
+
+                    // 현재 위치 리셋
+                    locations[index][0] = tempX;
+                    locations[index][1] = tempY;
                 }
+
+                // 거리 리셋
+                distance -= nextDistance;
             }
         }
     }
