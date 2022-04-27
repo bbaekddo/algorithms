@@ -75,45 +75,44 @@ public class Problem1251 {
             Arrays.fill(D, Long.MAX_VALUE);
 
             // 탐색 시작
-            vertices[0].setCheck(true);
-            D[0] = 0;
+//            vertices[0].setCheck(true);
             int index = 0;
             int checkCount = 0;
-            while (checkCount < N) {
-                int tempIndex = index;
+            while (checkCount < N - 1) {
+                int tempIndex = -1;
+
                 // 가중치 합이 최소인 인덱스 탐색
-                long min = Long.MAX_VALUE;
                 for (int j = 0; j < N; j++) {
-                    if (!vertices[j].getCheck()) {
+                    if (!vertices[j].getCheck() && index != j) {
                         long xSqrt = (long) (vertices[j].getX() - vertices[index].getX()) * (vertices[j].getX() - vertices[index].getX());
                         long ySqrt = (long) (vertices[j].getY() - vertices[index].getY()) * (vertices[j].getY() - vertices[index].getY());
                         long tempDistance = xSqrt + ySqrt;
 
-                        if (tempDistance < D[j]) {
-                            D[j] = tempDistance;
+                        if (tempDistance < D[index]) {
+                            D[index] = tempDistance;
+                            tempIndex = j;
                         }
-                    }
-
-                    if (min > D[j]) {
-                        min = D[j];
-                        index = j;
                     }
                 }
 
                 // 현재 정점 완료 처리
-                vertices[tempIndex].setCheck(true);
+                vertices[index].setCheck(true);
+                index = tempIndex;
                 checkCount++;
             }
 
             long totalDistance = 0L;
             for (int j = 0; j < N; j++) {
+                if (D[j] == Long.MAX_VALUE) {
+                    D[j] = 0L;
+                }
                 totalDistance += D[j];
             }
 
-            double totalFee = Math.round(E * totalDistance);
+            double totalFee = E * totalDistance;
 
             // 결과 출력
-            System.out.println("#" + (i + 1) + " " + totalFee);
+            System.out.println("#" + (i + 1) + " " + Math.round(totalFee));
         }
     }
 }
