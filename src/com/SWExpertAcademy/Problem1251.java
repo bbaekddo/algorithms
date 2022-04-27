@@ -77,10 +77,7 @@ public class Problem1251 {
             // 탐색 시작
 //            vertices[0].setCheck(true);
             int index = 0;
-            int checkCount = 0;
-            while (checkCount < N - 1) {
-                int tempIndex = -1;
-
+            while (index < N - 1) {
                 // 가중치 합이 최소인 인덱스 탐색
                 for (int j = 0; j < N; j++) {
                     if (!vertices[j].getCheck() && index != j) {
@@ -90,15 +87,13 @@ public class Problem1251 {
 
                         if (tempDistance < D[index]) {
                             D[index] = tempDistance;
-                            tempIndex = j;
                         }
                     }
                 }
 
                 // 현재 정점 완료 처리
                 vertices[index].setCheck(true);
-                index = tempIndex;
-                checkCount++;
+                index++;
             }
 
             long totalDistance = 0L;
